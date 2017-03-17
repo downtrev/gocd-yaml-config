@@ -14,22 +14,13 @@ pipelines:
     materials:
       mygit: # this is the name of material, the name can contain only of alphanumeric & underscore characters
         # keyword git says about type of material and url at once
-        git: http://my.example.org/mygit.git
-        branch: ci
+        git: http://github.com/kevinKalmbach/sovrnTest.git
+        branch: master
     stages: # list of stages in order
-      - build: # name of stage
+      - Build: # name of stage
           clean_workspace: true
           jobs:
-            csharp: # name of the job
-              resources:
-               - net45
-              artifacts:
-               - build:
-                   source: 
-                   destination: 
-               - test:
-                   source: 
-                   destination: 
+            build: # name of the job
               tasks:
                - exec: # indicates type of task
-                   command: make
+                   command: pwd
