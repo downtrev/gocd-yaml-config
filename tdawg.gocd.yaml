@@ -1,22 +1,28 @@
 #tdawg.gocd.yaml
 environments:
-  Tdawg-env1:
+  testing:
     environment_variables:
-      DEPLOYMENT: Tdawg-test-env1
+      DEPLOYMENT: testing
     secure_variables:
       ENV_PASSWORD: "s&Du#@$xsSa"
     pipelines:
-      - Tdawg-test-pipeline
+      - example-deploy-testing
+      - build-testing
 pipelines:
   mypipe1: # definition of mypipe1 pipeline
-    group: Tdawg-test-group # note that the group name can contain only of alphanumeric & underscore characters
+    group: mygroup # note that the group name can contain only of alphanumeric & underscore characters
     label_template: "${mygit[:8]}"
     locking: off
     materials:
-      sovrnTest: # this is the name of material, the name can contain only of alphanumeric & underscore characters
+      mygit: # this is the name of material, the name can contain only of alphanumeric & underscore characters
         # keyword git says about type of material and url at once
-        git: http://github.com/kevinKalmbach/sovrnTest.git
+        git: https://github.com/kevinKalmbach/sovrnTest.git
         branch: master
+      myupstream:
+        # type is optional here, material type is implied based on presence of pipeline and stage fields
+        # type: dependency
+        pipeline: pipe2
+        stage: test
     stages: # list of stages in order
       - build: # name of stage
           clean_workspace: true
@@ -32,7 +38,7 @@ pipelines:
                    source: tests/
                    destination: test-reports/
               tabs:
-                report:
+                report: test-reports/index.html
               tasks: # ordered list of tasks to execute in job csharp
                - fetch:
                    pipeline: pipe2
