@@ -30,3 +30,6 @@ pipelines:
                - test:
                    source: 
                    destination: 
+              tasks:
+               - exec: # indicates type of task
+                   command: make
