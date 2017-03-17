@@ -1,6 +1,4 @@
 #tdawg.gocd.yaml
-environments:
-  testing:
 pipelines:
   mypipe1: # definition of mypipe1 pipeline
     group: mygroup # note that the group name can contain only of alphanumeric & underscore characters
