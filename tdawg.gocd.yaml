@@ -25,13 +25,11 @@ pipelines:
                - net45
               artifacts:
                - build:
-                   source: bin/
-                   destination: build
+                   source: 
+                   destination: 
                - test:
-                   source: tests/
-                   destination: test-reports/
-              tabs:
-                report: test-reports/index.html
+                   source: 
+                   destination: 
               tasks: # ordered list of tasks to execute in job csharp
                - fetch:
                    pipeline: pipe2
