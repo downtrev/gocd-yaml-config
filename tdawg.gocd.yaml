@@ -1,8 +1,8 @@
 #tdawg.gocd.yaml
 environments:
-  testing:
+  Tdawg-env1:
     environment_variables:
-      DEPLOYMENT: testing
+      DEPLOYMENT: Tdawg-test-env1
     secure_variables:
       ENV_PASSWORD: "s&Du#@$xsSa"
     pipelines:
