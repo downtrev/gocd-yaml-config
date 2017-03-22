@@ -29,6 +29,8 @@ pipelines:
           clean_workspace: true
           jobs:
             install: # name of the job
+              resources:
+               - nimbus2000
               tasks:
                - fetch: # indicates type of task
                    pipeline: Tdawg1
