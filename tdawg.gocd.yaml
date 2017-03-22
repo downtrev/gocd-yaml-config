@@ -28,7 +28,8 @@ pipelines:
                - exec: # indicates type of task
                    command: mvn
                    arguments:
-                    - "clean install"
+                    - clean
+                    - install
       - Tdawg1.Install: # name of stage
           clean_workspace: true
           jobs:
