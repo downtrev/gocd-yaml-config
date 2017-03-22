@@ -18,7 +18,7 @@ pipelines:
                - nimbus2000
               artifacts:
                - build:
-                   source: **/target/*
+                   source: target
                    destination: build
               tasks:
                - exec: # indicates type of task
