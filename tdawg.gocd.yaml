@@ -1,6 +1,6 @@
 #tdawg.gocd.yaml
 environments:
- Tdawgs:
+ testing:
    pipelines:
     - Tdawg1
 pipelines:
