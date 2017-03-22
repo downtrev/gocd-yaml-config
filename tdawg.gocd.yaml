@@ -1,19 +1,38 @@
 #tdawg.gocd.yaml
 pipelines:
-  mypipe1: # definition of mypipe1 pipeline
-    group: mygroup # note that the group name can contain only of alphanumeric & underscore characters
-    label_template: "${mygit[:8]}"
+  Tdawg1: # definition of mypipe1 pipeline
+    group: Tdawgs # note that the group name can contain only of alphanumeric & underscore characters
+    label_template: "${mygit[:7]}"
     locking: off
     materials:
-      mygit: # this is the name of material, the name can contain only of alphanumeric & underscore characters
+      gitTdawg: # this is the name of material, the name can contain only of alphanumeric & underscore characters
         # keyword git says about type of material and url at once
         git: http://github.com/kevinKalmbach/sovrnTest.git
         branch: master
     stages: # list of stages in order
-      - Build: # name of stage
+      - Tdawg1.Build: # name of stage
           clean_workspace: true
           jobs:
             build: # name of the job
+              resources:
+               - nimbus2000
+              artifacts:
+               - build:
+                   source: **/target/*
+                   destination: build
               tasks:
                - exec: # indicates type of task
-                   command: pwd
+                   command: mvn
+                   arguments:
+                    - "clean install"
+      - Tdawg1.Install: # name of stage
+          clean_workspace: true
+          jobs:
+            install: # name of the job
+              tasks:
+               - fetch: # indicates type of task
+                   pipeline: Tdawg1
+                   stage: Tdawg1.Build
+                   job: build
+                   source: build/target
+                   destination: 
