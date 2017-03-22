@@ -2,7 +2,7 @@
 pipelines:
   Tdawg1: # definition of mypipe1 pipeline
     group: Tdawgs # note that the group name can contain only of alphanumeric & underscore characters
-    label_template: "${mygit[:7]}"
+    label_template: "${gitTdawg[:7]}"
     locking: off
     materials:
       gitTdawg: # this is the name of material, the name can contain only of alphanumeric & underscore characters
