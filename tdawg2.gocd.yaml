@@ -8,8 +8,6 @@ pipelines:
     group: Tdawgs # note that the group name can contain only of alphanumeric & underscore characters
     label_template: "${gitTdawg[:7]}"
     locking: off
-    timer:
-      only_on_changes: yes
     materials:
       gitTdawg: # this is the name of material, the name can contain only of alphanumeric & underscore characters
         # keyword git says about type of material and url at once
