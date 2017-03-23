@@ -2,6 +2,7 @@
 environments:
  testing:
    pipelines:
+    - Tdawg1
     - Tdawg2
 pipelines:
   Tdawg2: # definition of mypipe1 pipeline
