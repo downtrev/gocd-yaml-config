@@ -4,6 +4,7 @@ environments:
    pipelines:
     - Tdawg1
     - Tdawg2
+    - Tdawg3
 pipelines:
   Tdawg1: # definition of mypipe1 pipeline
     group: Tdawgs # note that the group name can contain only of alphanumeric & underscore characters
