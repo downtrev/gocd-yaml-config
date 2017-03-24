@@ -1,7 +1,7 @@
 #tdawg.gocd.yaml
 pipelines:
-  Tdawg4: # definition of mypipe1 pipeline
-    group: Tdawgs # note that the group name can contain only of alphanumeric & underscore characters
+  Tdawg4: # definition of pipeline Tdawg4
+    group: Tdawgs # Group_name use only alphanumeric & underscore characters
     label_template: "${COUNT}-${gitTdawg[:7]}"
     locking: off
     materials:
