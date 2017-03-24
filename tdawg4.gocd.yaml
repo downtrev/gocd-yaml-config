@@ -5,21 +5,21 @@ pipelines:
     label_template: "${COUNT}-${gitTdawg[:7]}"
     locking: off
     materials:
-      gitTdawg: # this is the name of material, the name can contain only of alphanumeric & underscore characters
+      gitTdawg: # Material_name, only use alphanumeric & underscore characters
         # keyword git says about type of material and url at once
         git: http://github.com/kevinKalmbach/sovrnTest.git
         branch: hystrix
-    stages: # list of stages in order
-      - Tdawg4.Build: # name of stage
+    stages: # Stages listed in order
+      - Tdawg4.Build: # Stage_name
           fetch_materials: yes
           keep_artifacts: yes
           clean_workspace: yes
           jobs:
-            build: # name of the job
+            build: # Job_name
               resources:
-               - nimbus2000
+               - nimbus2000 #Resource_name
               artifacts:
-               - build:
+               - build:  #build or test
                    source: target
                    destination: build
               tasks:
@@ -29,14 +29,14 @@ pipelines:
                    arguments:
                     - clean
                     - install
-      - Tdawg4.Install: # name of stage
+      - Tdawg4.Install: # Stage_name
           clean_workspace: true
           jobs:
-            install: # name of the job
+            install: # Job_name
               resources:
                - nimbus2000
               tasks:
-               - fetch: # indicates type of task
+               - fetch: # Task type
                    run_if: passed
                    is_file: no
                    pipeline: Tdawg4
