@@ -26,4 +26,4 @@ pipelines:
                     - build
                     - -t
                     - hello-node:v2 
-                    - hellonode/Dockerfile
+                    - hellonode
