@@ -24,5 +24,4 @@ pipelines:
                    arguments:
                     - build
                     - -t
-                    - hello-node:v2
-                    - .
+                    - hello-node:v2 .
