@@ -27,3 +27,9 @@ pipelines:
                     - -t
                     - hello-node:v2 
                     - hellonode
+               - exec: 
+                   run_if: passed
+                   command: docker
+                   arguments:
+                    - run
+                    - hello-node:v2 
