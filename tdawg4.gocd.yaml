@@ -32,4 +32,4 @@ pipelines:
                    command: docker
                    arguments:
                     - run
-                    - hello-node:v2 
+                    - lijit/scm:docker-whale_0.1
