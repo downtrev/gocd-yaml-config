@@ -19,14 +19,6 @@ pipelines:
               resources:
                - nimbus2000 #Resource_name
               tasks:
-               - exec: # indicates type of task
-                   run_if: passed
-                   command: docker
-                   arguments:
-                    - build
-                    - -t
-                    - hello-node:v2 
-                    - hellonode
                - exec: 
                    run_if: passed
                    command: docker
