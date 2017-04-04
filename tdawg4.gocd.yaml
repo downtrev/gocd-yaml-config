@@ -21,7 +21,7 @@ pipelines:
               tasks:
                - exec: 
                    run_if: passed
-                   command: sudo
+                   command: echo
                    arguments:
                     - docker
                     - run
