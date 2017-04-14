@@ -25,9 +25,7 @@ pipelines:
                    arguments: 
                     - -c
                     - USER=`whoami`
-                    - usermod -aG
-                    - docker
-                    - $USER
+                    - echo $USER
                - exec: 
                    run_if: passed
                    command: docker
