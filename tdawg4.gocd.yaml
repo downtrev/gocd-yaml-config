@@ -24,7 +24,10 @@ pipelines:
                    command: /bin/bash
                    arguments: 
                     - -c
-                    - whoami
+                    - USER=`whoami`
+                    - usermod -aG 
+                    - docker
+                    - go
                - exec: 
                    run_if: passed
                    command: docker
