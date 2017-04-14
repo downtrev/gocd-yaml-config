@@ -29,7 +29,7 @@ pipelines:
                    run_if: passed
                    command: mvn
                    arguments:
-                    - ${MVN_GOAL}
+                    - $MVN_GOAL
       - Tdawg2.Install: # name of stage
           clean_workspace: true
           jobs:
