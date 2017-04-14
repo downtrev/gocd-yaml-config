@@ -15,7 +15,7 @@ pipelines:
           keep_artifacts: yes
           clean_workspace: yes
           environment_variables:
-            MVN_GOAL: clean install
+            MVN_GOAL: mvn clean install
           jobs:
             build: # name of the job
               resources:
@@ -27,8 +27,9 @@ pipelines:
               tasks:
                - exec: # indicates type of task
                    run_if: passed
-                   command: mvn
+                   command: /bin/bash
                    arguments:
+                    - -c
                     - $MVN_GOAL
       - Tdawg2.Install: # name of stage
           clean_workspace: true
