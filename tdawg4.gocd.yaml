@@ -24,6 +24,7 @@ pipelines:
                    command: /bin/bash
                    arguments: 
                     - -c
+                    - USER=`whoami`
                     - usermod
                     - -aG
                     - docker
