@@ -21,8 +21,9 @@ pipelines:
               tasks:
                - exec: 
                    run_if: passed
-                   command: sudo
+                   command: ssh
                    arguments:
+                    - -t
                     - docker
                     - run
                     - lijit/scm:docker-whale_0.1
