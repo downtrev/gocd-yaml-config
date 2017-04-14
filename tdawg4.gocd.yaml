@@ -23,7 +23,7 @@ pipelines:
                    run_if: passed
                    command: ssh
                    arguments:
-                    - -t
+                    - -tt
                     - docker
                     - run
                     - lijit/scm:docker-whale_0.1
