@@ -24,8 +24,7 @@ pipelines:
                    command: /bin/bash
                    arguments: 
                     - -c
-                    - USER=`whoami`
-                    - echo $USER
+                    - whoami
                - exec: 
                    run_if: passed
                    command: docker
