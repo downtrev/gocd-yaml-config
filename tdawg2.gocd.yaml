@@ -14,6 +14,8 @@ pipelines:
           fetch_materials: yes
           keep_artifacts: yes
           clean_workspace: yes
+          environment_variables:
+            MVN_GOAL: clean install
           jobs:
             build: # name of the job
               resources:
@@ -27,8 +29,7 @@ pipelines:
                    run_if: passed
                    command: mvn
                    arguments:
-                    - clean
-                    - install
+                    - ${MVN_GOAL}
       - Tdawg2.Install: # name of stage
           clean_workspace: true
           jobs:
