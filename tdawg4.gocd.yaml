@@ -19,15 +19,10 @@ pipelines:
               resources:
                - nimbus2000 #Resource_name
               tasks:
-               - exec:
-                   run_if: passed
-                   command: /bin/bash
-                   arguments: 
-                    - -c
-                    - USER=`whoami`
-                    - usermod -aG 
-                    - docker
-                    - go
+               - script: |
+                   usermod -aG docker go
+                   echo `whoami`
+                   echo `id`
                - exec: 
                    run_if: passed
                    command: docker
