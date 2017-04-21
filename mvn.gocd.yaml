@@ -22,4 +22,3 @@ pipelines:
             tasks: 
               - exec:
                 command: ls
-                arguments:
