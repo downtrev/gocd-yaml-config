@@ -10,7 +10,7 @@ pipelines:
     locking: off
     materials:
       workbench_wordpress: 
-        git: git@github.com:sovrn/sovrn-workbench-wordpress.git
+        git: http://github.com/sovrn/sovrn-workbench-wordpress.git
         branch: master
     stages:
       - build: 
