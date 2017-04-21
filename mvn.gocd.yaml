@@ -13,12 +13,19 @@ pipelines:
         git: http://github.com/sovrn/sovrn-workbench-wordpress.git
         branch: master
     stages:
-      - build: 
-        clean_workspace: true
-        jobs:
-          create_docker_mvn_image:
-            resources:
-              - docker
-            tasks: 
-              - exec:
-                command: ls
+      - Tdawg1.Build: # name of stage
+          clean_workspace: true
+          jobs:
+            build: # name of the job
+              resources:
+               - nimbus2000
+              artifacts:
+               - build:
+                   source: target
+                   destination: build
+              tasks:
+               - exec: # indicates type of task
+                   command: mvn
+                   arguments:
+                    - clean
+                    - install
