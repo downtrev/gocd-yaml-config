@@ -6,7 +6,7 @@ environments:
 pipelines:
   wp_mvn_docker:
     group: Workbench_Deployments
-    label_template: "${gitTdawg[:7]}"
+    label_template: "${COUNT}"
     locking: off
     materials:
       workbench_wordpress: 
