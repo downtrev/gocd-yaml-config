@@ -1,4 +1,8 @@
 #ci.gocd.yaml
+environments:
+ someshit:
+   pipelines:
+    - wp_mvn_docker
 pipelines:
   wp_mvn_docker:
     group: Workbench_Deployments
@@ -6,7 +10,7 @@ pipelines:
     locking: off
     materials:
       workbench_wordpress: 
-        git: "git@github.com:sovrn/sovrn-workbench-wordpress.git"
+        git: git@github.com:sovrn/sovrn-workbench-wordpress.git
         branch: master
     stages:
       - build: 
@@ -19,4 +23,3 @@ pipelines:
               - exec:
                 command: ls
                 arguments:
-                  - " -al *"
