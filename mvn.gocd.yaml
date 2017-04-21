@@ -1,0 +1,48 @@
+#ci.gocd.yaml
+pipelines:
+  wp_mvn_dockergs:
+    group: "Workbench_Deployments"
+    label_template: "${COUNT}"
+    locking: off
+    materials:
+      workbench_wordpress: 
+        git: "git@github.com:sovrn/sovrn-workbench-wordpress.git"
+        branch: master
+        # destination: workbench
+      # docker_base:
+      #   git: "https://github.com/sovrn/docker_base"
+      #   branch: master
+      #   whitelist:
+      #      - maven/**/*.*
+      #   destination: docker_base
+      #   auto_update: true
+    stages:
+      - build: 
+        clean_workspace: true
+        jobs:
+          create_docker_mvn_image:
+            resources:
+              - docker
+            tasks: 
+              - exec:
+                command: ls
+                arguments:
+                  - " -al *"
+              - exec:
+                command: echo "Hello Work"
+      #     push.docker.mvn.image:
+      #       resources:
+      #         - docker
+      #       tasks: # ordered list of tasks to execute in job csharp
+      #         - exec: # indicates type of task
+      #           command: echo "Hello Work"
+      # - push: # name of stage
+      #   jobs:
+      #     create.docker.mvn.image: # name of the job
+      #       resources:
+      #        - docker
+      #       tasks: 
+      #        - exec:
+      #            command: docker
+      #            arguments:
+      #             - "image ls -a"
