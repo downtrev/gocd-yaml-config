@@ -7,7 +7,6 @@ environments:
     - Tdawg3
     - Tdawg4 # Adding comment
     - Tdawg5
-    - wp_mvn_docker
 pipelines:
   Tdawg1: # definition of mypipe1 pipeline
     group: Tdawgs # note that the group name can contain only of alphanumeric & underscore characters
