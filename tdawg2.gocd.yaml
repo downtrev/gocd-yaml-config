@@ -21,7 +21,7 @@ pipelines:
           jobs:
             build: # name of the job
               resources:
-                - nimbus2000
+               - nimbus2000
               artifacts:
                - build:
                    source: target
