@@ -1,6 +1,6 @@
 #ci.gocd.yaml
 environments:
- testing:
+ workbench_deployment:
    pipelines:
     - wp_mvn_docker
 pipelines:
