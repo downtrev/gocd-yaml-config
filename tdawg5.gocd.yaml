@@ -41,8 +41,8 @@ pipelines:
                - fetch: # indicates type of task
                    run_if: passed
                    is_file: no
-                   pipeline: Tdawg2
-                   stage: Tdawg2.Build
+                   pipeline: Tdawg5
+                   stage: Tdawg5.Build
                    job: build
                    source: build/target
                    destination: 
