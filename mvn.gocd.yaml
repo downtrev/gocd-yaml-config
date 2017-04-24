@@ -9,8 +9,8 @@ pipelines:
     label_template: "${COUNT}"
     locking: off
     materials:
-      b: 
-        git: http://github.com/sovrn/sovrn-workbench-wordpress.git
+      build: 
+        git: git@github.com:sovrn/sovrn-workbench-wordpress.git
         branch: master
     stages:
       - mvn_image: # name of stage
