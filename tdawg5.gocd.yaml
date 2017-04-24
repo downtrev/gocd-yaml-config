@@ -1,0 +1,48 @@
+#tdawg.gocd.yaml
+pipelines:
+  Tdawg5: # definition of mypipe1 pipeline
+    group: Tdawgs # note that the group name can contain only of alphanumeric & underscore characters
+    label_template: "${gitTdawg[:7]}"
+    locking: off
+    materials:
+      gitTdawg: # this is the name of material, the name can contain only of alphanumeric & underscore characters
+        # keyword git says about type of material and url at once
+        git: http://github.com/kevinKalmbach/sovrnTest.git
+        branch: master
+    stages: # list of stages in order
+      - Tdawg5.Build: # name of stage
+          fetch_materials: yes
+          keep_artifacts: yes
+          clean_workspace: yes
+          environment_variables:
+            MVN_GOAL: mvn clean install
+          jobs:
+            build: # name of the job
+              resources:
+               - nimbus2000
+              artifacts:
+               - build:
+                   source: target
+                   destination: build
+              tasks:
+               - exec: # indicates type of task
+                   run_if: passed
+                   command: /bin/bash
+                   arguments:
+                    - -c
+                    - $MVN_GOAL
+      - Tdawg5.Install: # name of stage
+          clean_workspace: true
+          jobs:
+            install: # name of the job
+              resources:
+               - nimbus2000
+              tasks:
+               - fetch: # indicates type of task
+                   run_if: passed
+                   is_file: no
+                   pipeline: Tdawg2
+                   stage: Tdawg2.Build
+                   job: build
+                   source: build/target
+                   destination: 
