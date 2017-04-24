@@ -1,7 +1,7 @@
 #ci.gocd.yaml
 environments:
- workbench_deployment:
-   pipelines:
+  something:
+    pipelines:
     - wp_mvn_docker
 pipelines:
   wp_mvn_docker:
@@ -9,7 +9,7 @@ pipelines:
     label_template: "${COUNT}"
     locking: off
     materials:
-      build: 
+      workbench_wordpress: 
         git: git@github.com:sovrn/sovrn-workbench-wordpress.git
         branch: master
     stages:
@@ -18,9 +18,9 @@ pipelines:
           jobs:
             create_docker_mvn_image: # name of the job
               resources:
-               - docker
+              - docker
               tasks:
-               - exec: # indicates type of task
+              - exec: # indicates type of task
                    command: mvn
                    arguments:
-                    - '-v'
+                   - '-v'
