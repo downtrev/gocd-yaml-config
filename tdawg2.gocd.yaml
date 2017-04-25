@@ -4,11 +4,14 @@ pipelines:
     group: Tdawgs # note that the group name can contain only of alphanumeric & underscore characters
     label_template: "${gitTdawg[:7]}"
     locking: off
+    environment_variables:
+      COMPONENT: tdawg_product
+      BRANCH: master
     materials:
       gitTdawg: # this is the name of material, the name can contain only of alphanumeric & underscore characters
         # keyword git says about type of material and url at once
         git: http://github.com/kevinKalmbach/sovrnTest.git
-        branch: master
+        branch: ${BRANCH}
     stages: # list of stages in order
       - Tdawg2.Build: # name of stage
           fetch_materials: yes
