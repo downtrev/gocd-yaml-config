@@ -2,7 +2,7 @@
 #comment, this is a comment
 pipelines:
   Tdawg4: # definition of pipeline Tdawg4
-    group: Tdawgs # Group_name use only alphanumeric & underscore characters
+    group: Tdawg.Group # Group_name use only alphanumeric & underscore characters
     label_template: "${COUNT}-${gitTdawg[:7]}"
     locking: off
     materials:
