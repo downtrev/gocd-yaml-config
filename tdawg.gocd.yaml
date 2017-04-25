@@ -5,7 +5,7 @@ environments:
     - Tdawg.1
     - Tdawg.2
     - Tdawg.3
-    - Tdawg.4 # Adding comment
+    - Tdawg^4 # Adding comment
 pipelines:
   Tdawg.1: # definition of mypipe1 pipeline
     group: Tdawg.Group # note that the group name can contain only of alphanumeric & underscore characters
