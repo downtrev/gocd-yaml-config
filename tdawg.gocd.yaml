@@ -2,12 +2,12 @@
 environments:
  Tdawg.Env:
    pipelines:
-    - Tdawg1
-    - Tdawg2
-    - Tdawg3
-    - Tdawg4 # Adding comment
+    - Tdawg.1
+    - Tdawg.2
+    - Tdawg.3
+    - Tdawg.4 # Adding comment
 pipelines:
-  Tdawg1: # definition of mypipe1 pipeline
+  Tdawg.1: # definition of mypipe1 pipeline
     group: Tdawg.Group # note that the group name can contain only of alphanumeric & underscore characters
     label_template: "${gitTdawg[:7]}"
     locking: off
@@ -41,7 +41,7 @@ pipelines:
                - nimbus2000
               tasks:
                - fetch: # indicates type of task
-                   pipeline: Tdawg1
+                   pipeline: Tdawg.1
                    stage: Tdawg1.Build
                    job: build
                    source: build/target
