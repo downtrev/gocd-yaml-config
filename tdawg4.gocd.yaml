@@ -1,7 +1,7 @@
 #tdawg.gocd.yaml
 #comment, this is a comment
 pipelines:
-  Tdawg.4: # definition of pipeline Tdawg4
+  Tdawg^4: # definition of pipeline Tdawg4
     group: Tdawg.Group # Group_name use only alphanumeric & underscore characters
     label_template: "${COUNT}-${gitTdawg[:7]}"
     locking: off
