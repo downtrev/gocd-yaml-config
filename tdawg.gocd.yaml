@@ -1,6 +1,6 @@
 #tdawg.gocd.yaml
 environments:
- testing:
+ Tdawg.Env:
    pipelines:
     - Tdawg1
     - Tdawg2
@@ -8,7 +8,7 @@ environments:
     - Tdawg4 # Adding comment
 pipelines:
   Tdawg1: # definition of mypipe1 pipeline
-    group: Tdawgs # note that the group name can contain only of alphanumeric & underscore characters
+    group: Tdawg.Group # note that the group name can contain only of alphanumeric & underscore characters
     label_template: "${gitTdawg[:7]}"
     locking: off
     materials:
