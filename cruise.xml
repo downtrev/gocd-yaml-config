@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cruise xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="cruise-config.xsd" schemaVersion="89">
+  <server artifactsdir="/var/go/artifacts" siteUrl="http://ec2-54-71-67-101.us-west-2.compute.amazonaws.com:8153" secureSiteUrl="https://ec2-54-71-67-101.us-west-2.compute.amazonaws.com:8154" agentAutoRegisterKey="7a5b0952-9cc6-4ad8-87f7-186e81012c4c" commandRepositoryLocation="default" serverId="ebda7472-bd43-4700-ae6f-99621471120d" />
+  <scms>
+    <scm id="1e0dcf71-9935-418a-b5b4-fa850154978c" name="Tdawg-scm-github-test">
+      <pluginConfiguration id="github.pr" version="1.3.2" />
+      <configuration>
+        <property>
+          <key>url</key>
+          <value>https://github.com/kevinKalmbach/sovrnTest.git</value>
+        </property>
+        <property>
+          <key>defaultBranch</key>
+          <value>master</value>
+        </property>
+      </configuration>
+    </scm>
+  </scms>
+  <config-repos>
+    <config-repo plugin="yaml.config.plugin">
+      <git url="git@github.com:downtrev/tdawg-yaml-config.git" branch="tdawg" />
+    </config-repo>
+    <config-repo plugin="yaml.config.plugin">
+      <git url="git@github.com:downtrev/tdawg-yaml-config.git" branch="master" />
+    </config-repo>
+    <config-repo plugin="yaml.config.plugin">
+      <git url="git@github.com:sovrn/sovrn-workbench-wordpress.git" branch="gocd-pipeline" />
+    </config-repo>
+  </config-repos>
+  <pipelines group="Tdawgs">
+    <pipeline name="Tdawg" isLocked="false">
+      <params>
+        <param name="BRANCH">master</param>
+      </params>
+      <environmentvariables>
+        <variable name="COMPONENT">
+          <value>blackhawk</value>
+        </variable>
+      </environmentvariables>
+      <materials>
+        <scm ref="1e0dcf71-9935-418a-b5b4-fa850154978c" />
+      </materials>
+      <stage name="Tdawg.Build">
+        <environmentvariables>
+          <variable name="COMPONENT">
+            <value>blackhawk.qa</value>
+          </variable>
+        </environmentvariables>
+        <jobs>
+          <job name="build">
+            <environmentvariables>
+              <variable name="COMPONENT">
+                <value>blackhawk.canary</value>
+              </variable>
+            </environmentvariables>
+            <tasks>
+              <task>
+                <pluginConfiguration id="script-executor" version="1" />
+                <configuration>
+                  <property>
+                    <key>script</key>
+                    <value>mvn clean install</value>
+                  </property>
+                  <property>
+                    <key>shtype</key>
+                    <value>bash</value>
+                  </property>
+                </configuration>
+                <runif status="passed" />
+              </task>
+              <task>
+                <pluginConfiguration id="script-executor" version="1" />
+                <configuration>
+                  <property>
+                    <key>script</key>
+                    <value>echo ''&#xD;
+echo "============================================================"&#xD;
+echo "Product: $COMPONENT"&#xD;
+echo "============================================================"&#xD;
+echo ''</value>
+                  </property>
+                  <property>
+                    <key>shtype</key>
+                    <value>bash</value>
+                  </property>
+                </configuration>
+                <runif status="passed" />
+              </task>
+            </tasks>
+            <tabs>
+              <tab name="reports" path="build/testoutput/result/index.html" />
+            </tabs>
+            <resources>
+              <resource>nimbus2000</resource>
+            </resources>
+            <artifacts>
+              <artifact src="target/*.jar" dest="build" />
+              <test src="target/surefire-reports/*" />
+            </artifacts>
+          </job>
+          <job name="test_1">
+            <tasks>
+              <task>
+                <pluginConfiguration id="script-executor" version="1" />
+                <configuration>
+                  <property>
+                    <key>script</key>
+                    <value>echo ''&#xD;
+echo "============================================================"&#xD;
+echo "Product: $COMPONENT"&#xD;
+echo "============================================================"&#xD;
+echo ''</value>
+                  </property>
+                  <property>
+                    <key>shtype</key>
+                    <value>bash</value>
+                  </property>
+                </configuration>
+                <runif status="passed" />
+              </task>
+            </tasks>
+            <resources>
+              <resource>nimbus2000</resource>
+            </resources>
+          </job>
+        </jobs>
+      </stage>
+      <stage name="Tdawg.Install">
+        <jobs>
+          <job name="install">
+            <tasks>
+              <fetchartifact pipeline="Tdawg" stage="Tdawg.Build" job="build" srcdir="build">
+                <runif status="passed" />
+              </fetchartifact>
+              <task>
+                <pluginConfiguration id="script-executor" version="1" />
+                <configuration>
+                  <property>
+                    <key>script</key>
+                    <value>echo ''&#xD;
+echo "============================================================"&#xD;
+echo "Product: $COMPONENT"&#xD;
+echo "============================================================"&#xD;
+echo ''</value>
+                  </property>
+                  <property>
+                    <key>shtype</key>
+                    <value>bash</value>
+                  </property>
+                </configuration>
+                <runif status="passed" />
+              </task>
+            </tasks>
+            <resources>
+              <resource>nimbus2000</resource>
+            </resources>
+          </job>
+        </jobs>
+      </stage>
+    </pipeline>
+  </pipelines>
+  <pipelines group="Workbench_Deployments" />
+  <pipelines group="Workbench.Deployments" />
+  <environments>
+    <environment name="example">
+      <agents>
+        <physical uuid="ed8a5b29-43a5-4c68-9f14-d95ace25f24b" />
+      </agents>
+    </environment>
+    <environment name="testing">
+      <agents>
+        <physical uuid="ed8a5b29-43a5-4c68-9f14-d95ace25f24b" />
+      </agents>
+      <pipelines>
+        <pipeline name="Tdawg" />
+      </pipelines>
+    </environment>
+    <environment name="Tdawgs">
+      <agents>
+        <physical uuid="ed8a5b29-43a5-4c68-9f14-d95ace25f24b" />
+      </agents>
+    </environment>
+    <environment name="someshit">
+      <agents>
+        <physical uuid="ed8a5b29-43a5-4c68-9f14-d95ace25f24b" />
+      </agents>
+    </environment>
+    <environment name="workbench_deployment" />
+    <environment name="something">
+      <agents>
+        <physical uuid="ed8a5b29-43a5-4c68-9f14-d95ace25f24b" />
+      </agents>
+    </environment>
+    <environment name="QA_Build_Installs">
+      <agents>
+        <physical uuid="ed8a5b29-43a5-4c68-9f14-d95ace25f24b" />
+      </agents>
+    </environment>
+  </environments>
+  <agents>
+    <agent hostname="ip-172-31-26-82" ipaddress="172.31.26.82" uuid="ed8a5b29-43a5-4c68-9f14-d95ace25f24b">
+      <resources>
+        <resource>nimbus2000</resource>
+        <resource>docker</resource>
+      </resources>
+    </agent>
+  </agents>
+</cruise>
+
