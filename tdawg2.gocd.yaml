@@ -1,6 +1,6 @@
 #tdawg.gocd.yaml
 pipelines:
-  Tdawg2: # definition of mypipe1 pipeline
+  Tdawg.2: # definition of mypipe1 pipeline
     group: Tdawg.Group # note that the group name can contain only of alphanumeric & underscore characters
     label_template: "${gitTdawg[:7]}"
     locking: off
@@ -44,7 +44,7 @@ pipelines:
                - fetch: # indicates type of task
                    run_if: passed
                    is_file: no
-                   pipeline: Tdawg2
+                   pipeline: Tdawg.2
                    stage: Tdawg2.Build
                    job: build
                    source: build/target
