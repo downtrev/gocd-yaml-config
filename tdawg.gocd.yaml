@@ -1,5 +1,11 @@
 #tdawg.gocd.yaml
 environments:
+ Tdawg.Env:
+   pipelines:
+    - Tdawg.1
+    - Tdawg.2
+    - Tdawg.3
+    - Tdawg.4 # Adding comment
  testing:
    pipelines:
     - Tdawg1
