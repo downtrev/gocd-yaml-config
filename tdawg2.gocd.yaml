@@ -1,6 +1,6 @@
 #tdawg.gocd.yaml
 pipelines:
-  Tdawg2: # definition of mypipe1 pipeline
+  Tdawg.2: # definition of mypipe1 pipeline
     group: Tdawgs # note that the group name can contain only of alphanumeric & underscore characters
     label_template: "${gitTdawg[:7]}"
     locking: off
@@ -13,7 +13,7 @@ pipelines:
         git: http://github.com/kevinKalmbach/sovrnTest.git
         branch: 
     stages: # list of stages in order
-      - Tdawg2.Build: # name of stage
+      - Tdawg.2.Build: # name of stage
           fetch_materials: yes
           keep_artifacts: yes
           clean_workspace: yes
@@ -44,8 +44,8 @@ pipelines:
                - fetch: # indicates type of task
                    run_if: passed
                    is_file: no
-                   pipeline: Tdawg2
-                   stage: Tdawg2.Build
+                   pipeline: Tdawg.2
+                   stage: Tdawg.2.Build
                    job: build
                    source: build/target
                    destination: 
