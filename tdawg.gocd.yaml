@@ -3,7 +3,7 @@ environments:
  testing:
    pipelines:
     - Tdawg1
-    - Tdawg.2
+    - Tdawg2
     - Tdawg3
     - Tdawg4 # Adding comment
     - Tdawg5
