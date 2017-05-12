@@ -6,6 +6,8 @@ environments:
     - Tdawg.2
     - Tdawg.3
     - Tdawg.4 # Adding comment
+  environment_variables:
+    BRANCH: master
 pipelines:
   Tdawg.1: # definition of mypipe1 pipeline
     group: Tdawg.Group # note that the group name can contain only of alphanumeric & underscore characters
