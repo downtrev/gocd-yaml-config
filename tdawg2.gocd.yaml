@@ -45,7 +45,7 @@ pipelines:
                      DisplayName: SCM BUILD BOT
                      IconOrEmoji: ":robot_face:"
                      Message: <http://ec2-54-71-67-101.us-west-2.compute.amazonaws.com:8153/go/tab/build/detail/$GO_PIPELINE_NAME/$GO_PIPELINE_COUNTER/$GO_STAGE_NAME/$GO_STAGE_COUNTER/$GO_JOB_NAME|Click here> for details.
-                     run_if: any
+                     run_if: failed
                      Title: Happy Happy Joy Joy
                      WebhookUrl: https://hooks.slack.com/services/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
       - Tdawg2.Install: # name of stage
