@@ -39,10 +39,10 @@ pipelines:
                      id: slack.task 
                      version: 1
                    options:
-                     WebhookUrl: https://hooks.slack.com/services/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
-                     Message: yada yada yada
                      Channel: gocd
+                     Message: yada yada yada
                      run_if: any
+                     WebhookUrl: https://hooks.slack.com/services/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
       - Tdawg2.Install: # name of stage
           clean_workspace: true
           jobs:
