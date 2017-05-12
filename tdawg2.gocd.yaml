@@ -37,6 +37,7 @@ pipelines:
                - plugin:
                    configuration: 
                      id: slack.task 
+                     version: 1.3.1
                    options:
                      Channel: gocd
                      Color: 9900cc
