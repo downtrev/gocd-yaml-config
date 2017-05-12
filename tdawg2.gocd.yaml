@@ -43,7 +43,7 @@ pipelines:
                      IconOrEmoji: ":robot_face:"
                      Message: yada yada yada
                      run_if: any
-                     Title: Happy Happy Joy Joy
+                     Title: H"appy Happy Joy Joy"
                      WebhookUrl: https://hooks.slack.com/services/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
       - Tdawg2.Install: # name of stage
           clean_workspace: true
