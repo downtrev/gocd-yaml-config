@@ -17,7 +17,7 @@ pipelines:
       gitTdawg: # this is the name of material, the name can contain only of alphanumeric & underscore characters
         # keyword git says about type of material and url at once
         git: http://github.com/kevinKalmbach/sovrnTest.git
-        branch: "$BRANCH"
+        branch: ""
     stages: # list of stages in order
       - Tdawg1.Build: # name of stage
           clean_workspace: true
