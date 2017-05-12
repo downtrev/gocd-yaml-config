@@ -40,6 +40,9 @@ pipelines:
                      version: 1
                    options:
                      Channel: gocd
+                     Color: 9900cc
+                     ColorType: Custom
+                     DisplayName: SCM BUILD BOT
                      IconOrEmoji: ":robot_face:"
                      Message: yada yada yada
                      run_if: any
