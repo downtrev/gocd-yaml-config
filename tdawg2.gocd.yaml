@@ -38,7 +38,7 @@ pipelines:
                     WebhookUrl: "https://hooks.slack.com/services/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"
                     Message: "yada yada yada"
                     IconOrEmoji: ":robot_face:"
-                    Channel: general
+                    Channel: gocd
                     ColorType: Good
                     run_if: any
                     configuration:
