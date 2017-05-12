@@ -1,13 +1,12 @@
 #tdawg.gocd.yaml
 pipelines:
-environment_variables:
-  BRANCH: master
   Tdawg2: # definition of mypipe1 pipeline
     group: Tdawgs # note that the group name can contain only of alphanumeric & underscore characters
     label_template: "${gitTdawg[:7]}"
     locking: off
     environment_variables:
       COMPONENT: tdawg_product
+      BRANCH: master
     materials:
       gitTdawg: # this is the name of material, the name can contain only of alphanumeric & underscore characters
         # keyword git says about type of material and url at once
