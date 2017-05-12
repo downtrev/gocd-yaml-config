@@ -40,7 +40,7 @@ pipelines:
                      version: 1
                    options:
                      Channel: gocd
-                     IconOrEmoji: :robot_face:
+                     IconOrEmoji: ":robot_face:"
                      Message: yada yada yada
                      run_if: any
                      WebhookUrl: https://hooks.slack.com/services/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
