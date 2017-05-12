@@ -38,8 +38,8 @@ pipelines:
                    configuration: 
                     id: slack.task 
                     version: 1
-                   WebhookUrl: 'https://hooks.slack.com/services/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'
-                   Message: 'yada yada yada'
+                   WebhookUrl: https://hooks.slack.com/services/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
+                   Message: yada yada yada
                    Channel: gocd
 #                   run_if: any
       - Tdawg2.Install: # name of stage
