@@ -35,15 +35,15 @@ pipelines:
                     - -c
                     - $MVN_GOAL
                - plugin:
+                   configuration:
+                     id: slack.task
+                     version: 1
                    WebhookUrl: "https://hooks.slack.com/services/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"
                    Message: "yada yada yada"
                    IconOrEmoji: ":robot_face:"
                    Channel: gocd
                    ColorType: Good
                    run_if: any
-                   configuration:
-                     id: slack.task
-                     version: 1
       - Tdawg2.Install: # name of stage
           clean_workspace: true
           jobs:
