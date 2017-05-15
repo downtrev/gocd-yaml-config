@@ -1,5 +1,7 @@
 #tdawg.gocd.yaml
 pipelines:
+environment_variables:
+  BRANCH: master
   Tdawg2: # definition of mypipe1 pipeline
     group: Tdawgs # note that the group name can contain only of alphanumeric & underscore characters
     label_template: "${gitTdawg[:7]}"
