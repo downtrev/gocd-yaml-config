@@ -64,7 +64,7 @@ pipelines:
                    echo ""
                    echo ""
                    echo "======================================="
-                   echo 'curl -x http://squid.dfw2.lijit.com:3128 -i -XPOST 'http://build3.dfw2.lijit.com:8086/write?db=go' --data-binary "test,environment=$GO_ENVIRONMENT_NAME,product=#{COMPONENT},pipeline_name=$GO_PIPELINE_NAME,stage_name=$GO_STAGE_NAME,job_name=$GO_JOB_NAME,agent=$AGENT,artifact=$ARTIFACT,trigger_user=$GO_TRIGGER_USER,author_name=$AUTHOR_NAME,author_email=$AUTHOR_EMAIL pipeline_counter=$GO_PIPELINE_COUNTER,pipeline_label=\"$GO_PIPELINE_LABEL\",stage_counter=$GO_STAGE_COUNTER,work_dir=\"$WORK_DIR\",revision=\"$GO_REVISION\",commit_date=\"$COMMIT_DATE\",commit_message=\"$COMMIT_MESSAGE\" $EPOCH_TIME"'
+                   curl -x http://squid.dfw2.lijit.com:3128 -i -XPOST 'http://build3.dfw2.lijit.com:8086/write?db=go' --data-binary "test,environment=$GO_ENVIRONMENT_NAME,product=#{COMPONENT},pipeline_name=$GO_PIPELINE_NAME,stage_name=$GO_STAGE_NAME,job_name=$GO_JOB_NAME,agent=$AGENT,artifact=$ARTIFACT,trigger_user=$GO_TRIGGER_USER,author_name=$AUTHOR_NAME,author_email=$AUTHOR_EMAIL pipeline_counter=$GO_PIPELINE_COUNTER,pipeline_label=\"$GO_PIPELINE_LABEL\",stage_counter=$GO_STAGE_COUNTER,work_dir=\"$WORK_DIR\",revision=\"$GO_REVISION\",commit_date=\"$COMMIT_DATE\",commit_message=\"$COMMIT_MESSAGE\" $EPOCH_TIME"
                    echo "======================================="
                    echo ""
                    echo ""
