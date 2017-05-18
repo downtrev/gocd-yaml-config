@@ -61,7 +61,13 @@ pipelines:
                    COMMIT_DATE=`git log -n 1 --date=short --pretty=format:"%cd"`
                    COMMIT_MESSAGE=`git log -n 1 --pretty=format:"%s"`
                    EPOCH_TIME=`date +%s%N`
-                   echo ""
+                   echo "$GO_REVISION"
+                   echo "$GO_ENVIRONMENT_NAME"
+                   echo "$GO_PIPELINE_NAME"
+                   echo "$GO_PIPELINE_COUNTER"
+                   echo "$GO_STAGE_NAME"
+                   echo "$GO_STAGE_COUNTER"
+                   echo "$GO_JOB_NAME"
                    echo "$WORK_DIR"
                    echo "$AGENT"
                    echo "$GIT_REV"
