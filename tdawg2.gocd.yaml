@@ -7,7 +7,7 @@ pipelines:
     label_template: "${git[:7]}"
     locking: off
     materials:
-      git:
+      :
       #gitTdawg: # this is the name of material, the name can contain only of alphanumeric & underscore characters
         # keyword git says about type of material and url at once
         git: http://github.com/kevinKalmbach/sovrnTest.git
